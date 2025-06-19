@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning ( Prediksi Risiko Kanker Paru-Paru) - REVO PRATAMA MC189
+# Laporan Proyek Machine Learning ( Prediksi Risiko Kanker Paru-Paru) - REVO PRATAMA MC189D5Y1619
 
 ## Domain Proyek
 Kanker paru-paru merupakan salah satu penyebab utama kematian akibat kanker di seluruh dunia, dengan lebih dari 2,2 juta kasus baru setiap tahun dan angka kelangsungan hidup lima tahun yang rendah, sekitar 25%. Tingginya angka kematian ini disebabkan oleh deteksi yang terlambat dan kompleksitas karakteristik sel kanker, seperti heterogenitas intra-tumor dan resistensi terhadap pengobatan. Oleh karena itu, dibutuhkan pendekatan baru yang lebih canggih dan efisien untuk mendeteksi dan memprediksi risiko kanker paru-paru sejak dini.
