@@ -61,10 +61,8 @@ Setelah membaca dataset menggunakan `pd.read_csv()`, informasi umum dataset adal
 print("Jumlah duplikasi: ", df.duplicated().sum())
 ```
 
-Terdapat **2** data duplikat yang telah dihapus dengan:
-
-```python
-df = df.drop_duplicates()
+```
+Terdapat **2** data duplikat 
 ```
 
 ### 3. Missing Values
@@ -102,6 +100,25 @@ Setiap fitur akan dijelaskan sebagai berikut:
 * **Fitur tidak digunakan**: Jika dalam proses analisis selanjutnya terdapat fitur dengan korelasi rendah atau multikolinearitas tinggi, fitur tersebut dapat dieliminasi.
 * **Fitur yang akan dihapus**: Belum ada yang dihapus pada tahap ini, namun pencatatan duplikasi sudah dilakukan.
 
+### 8. Penjelasan Fitur
+| **Fitur**               | **Deskripsi Singkat**                                |
+|-------------------------|------------------------------------------------------|
+| `GENDER`                | Jenis kelamin (M/F)                                  |
+| `AGE`                   | Usia dalam tahun                                     |
+| `SMOKING`               | Status merokok (1: Tidak, 2: Ya)                     |
+| `YELLOW_FINGERS`        | Ada/tidaknya jari menguning akibat nikotin           |
+| `ANXIETY`               | Ada/tidaknya kecemasan kronis                        |
+| `PEER_PRESSURE`         | Terpengaruh tekanan teman                            |
+| `CHRONIC_DISEASE`       | Riwayat penyakit kronis                              |
+| `FATIGUE`               | Kelelahan kronis                                     |
+| `ALLERGY`               | Riwayat alergi                                       |
+| `WHEEZING`              | Napas berbunyi                                       |
+| `ALCOHOL_CONSUMING`     | Konsumsi alkohol                                     |
+| `COUGHING`              | Batuk kronis                                         |
+| `SHORTNESS_OF_BREATH`   | Sesak napas                                          |
+| `SWALLOWING_DIFFICULTY` | Kesulitan menelan                                    |
+| `CHEST_PAIN`            | Nyeri dada                                           |
+| `LUNG_CANCER`           | Target (Yes/No)                                      |
 ---
 
 ### Variabel:
@@ -208,10 +225,6 @@ Model klasifikasi biner yang memodelkan probabilitas kejadian berdasarkan fungsi
 **Alasan pemilihan:**
 Digunakan sebagai baseline model karena efisien, cepat, dan mudah diinterpretasikan. Model ini menjadi acuan awal untuk membandingkan performa dengan model yang lebih kompleks.
 
-**Performa:**
-- **Data Simulasi**: Akurasi 49.67%, Precision 49.66%, Recall 49.67%, F1-Score 49.56%
-- **Data Klinis**: Akurasi 49.67%, Precision 49.66%, Recall 49.67%, F1-Score 49.56%
-
 ---
 
 ### 2. Random Forest
@@ -226,11 +239,6 @@ Model ansambel berbasis banyak pohon keputusan (decision trees) yang dilatih pad
 
 **Alasan pemilihan:**
 Lebih stabil, tahan terhadap overfitting, dan cocok untuk dataset menengah. Dapat menangani noise dan variasi dalam data klinis yang kompleks.
-
-**Performa:**
-- **Data Simulasi**: Akurasi 53.67%, Precision 53.67%, Recall 53.67%, F1-Score 53.65%
-- **Data Klinis**: Akurasi 53.67%, Precision 53.67%, Recall 53.67%, F1-Score 53.65%
-
 ---
 
 
@@ -248,10 +256,6 @@ Varian efisien dari gradient boosting dengan kemampuan regularisasi tambahan dan
 
 **Alasan pemilihan:**
 Presisi tinggi dan efisien dalam menangani missing values serta fitur dalam skala besar. Terkenal dengan performa superior dalam berbagai kompetisi ML dan aplikasi dunia nyata.
-
-**Performa:**
-- **Data Simulasi**: Akurasi 51.17%, Precision 51.17%, Recall 51.17%, F1-Score 51.12%
-- **Data Klinis**: Akurasi 51.17%, Precision 51.17%, Recall 51.17%, F1-Score 51.12%
 
 ---
 ## Evaluation
