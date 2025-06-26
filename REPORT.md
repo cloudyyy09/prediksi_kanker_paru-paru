@@ -61,7 +61,7 @@ Setelah membaca dataset menggunakan `pd.read_csv()`, informasi umum dataset adal
 print("Jumlah duplikasi: ", df.duplicated().sum())
 ```
 
-Terdapat **n** data duplikat yang telah dihapus dengan:
+Terdapat **0** data duplikat yang telah dihapus dengan:
 
 ```python
 df = df.drop_duplicates()
@@ -148,9 +148,18 @@ le = LabelEncoder()
 for col in categorical_columns:
     df[col] = le.fit_transform(df[col])
 ```
+### 3. Train-Test Split
 
+Setelah data bersih dan siap digunakan, dataset dibagi menjadi dua bagian:
 
-### 3. Feature Scaling (Standarisasi)
+* **80% untuk pelatihan (training)**
+* **20% untuk pengujian (testing)**
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+### 4. Feature Scaling (Standarisasi)
 
 Setelah dataset dibagi menjadi data latih dan data uji, seluruh fitur numerik dilakukan **standarisasi** menggunakan `StandardScaler`. Ini bertujuan untuk menyamakan skala antar fitur, yang sangat penting terutama bagi model yang peka terhadap perbedaan skala seperti Random Forest, Logistic Regression, dan XGBoost.
 
@@ -165,18 +174,6 @@ X_test[numerical_columns] = scaler.transform(X_test[numerical_columns])
 > **Catatan:**
 > - Standarisasi mengubah distribusi data agar memiliki **rata-rata 0** dan **standar deviasi 1**.
 > - Proses ini dilakukan **setelah** pembagian data (`train_test_split`) untuk menghindari **data leakage**.
-
-
-### 4. Train-Test Split
-
-Setelah data bersih dan siap digunakan, dataset dibagi menjadi dua bagian:
-
-* **80% untuk pelatihan (training)**
-* **20% untuk pengujian (testing)**
-
-```python
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-```
 
 ---
 
@@ -212,7 +209,7 @@ Model klasifikasi biner yang memodelkan probabilitas kejadian berdasarkan fungsi
 Digunakan sebagai baseline model karena efisien, cepat, dan mudah diinterpretasikan. Model ini menjadi acuan awal untuk membandingkan performa dengan model yang lebih kompleks.
 
 **Performa:**
-- **Data Simulasi**: Akurasi 97.00%, Precision 97.00%, Recall 97.00%, F1-Score 97.00%
+- **Data Simulasi**: Akurasi 49.67%, Precision 49.66%, Recall 49.67%, F1-Score 49.56%
 - **Data Klinis**: Akurasi 49.67%, Precision 49.66%, Recall 49.67%, F1-Score 49.56%
 
 ---
@@ -231,7 +228,7 @@ Model ansambel berbasis banyak pohon keputusan (decision trees) yang dilatih pad
 Lebih stabil, tahan terhadap overfitting, dan cocok untuk dataset menengah. Dapat menangani noise dan variasi dalam data klinis yang kompleks.
 
 **Performa:**
-- **Data Simulasi**: Akurasi 98.17%, Precision 98.18%, Recall 98.17%, F1-Score 98.17%
+- **Data Simulasi**: Akurasi 53.67%, Precision 53.67%, Recall 53.67%, F1-Score 53.65%
 - **Data Klinis**: Akurasi 53.67%, Precision 53.67%, Recall 53.67%, F1-Score 53.65%
 
 ---
@@ -253,7 +250,7 @@ Varian efisien dari gradient boosting dengan kemampuan regularisasi tambahan dan
 Presisi tinggi dan efisien dalam menangani missing values serta fitur dalam skala besar. Terkenal dengan performa superior dalam berbagai kompetisi ML dan aplikasi dunia nyata.
 
 **Performa:**
-- **Data Simulasi**: Akurasi 97.83%, Precision 97.84%, Recall 97.83%, F1-Score 97.83%
+- **Data Simulasi**: Akurasi 51.17%, Precision 51.17%, Recall 51.17%, F1-Score 51.12%
 - **Data Klinis**: Akurasi 51.17%, Precision 51.17%, Recall 51.17%, F1-Score 51.12%
 
 ---
@@ -271,7 +268,7 @@ Data simulasi dibuat dengan fungsi `make_classification()` dari scikit-learn yan
 X, y = make_classification(n_samples=2998, n_features=5, random_state=42)
 ```
 
-Semua model menunjukkan performa yang sangat tinggi (97.00% - 98.17%), dengan Random Forest sebagai model terbaik dengan akurasi 98.17%.
+Semua model menunjukkan performa yang sangat tinggi, dengan Random Forest sebagai model terbaik dengan akurasi.
 
 #### Data Klinis
 Data klinis nyata berasal dari dataset kanker paru-paru dengan variabel target 'LUNG_CANCER':
@@ -288,11 +285,11 @@ Performa pada data klinis jauh lebih rendah (49.67% - 55.50%), dengan XGBoost da
 | Model | Data Simulasi |  |  |  | Data Klinis |  |  |  |
 |-------|---------------|--------------|--------------|--------------|-------------|-------------|-------------|-------------|
 |  | **Accuracy** | **Precision** | **Recall** | **F1-Score** | **Accuracy** | **Precision** | **Recall** | **F1-Score** |
-| Logistic Regression | 0.9700 | 0.9700 | 0.9700 | 0.9700 | 0.4967 | 0.4966 | 0.4967 | 0.4956 |
-| Random Forest | **0.9817** | **0.9818** | **0.9817** | **0.9817** | 0.5367 | 0.5367 | 0.5367 | 0.5365 |
-| XGBoost | 0.9783 | 0.9784 | 0.9783 | 0.9783 | 0.5117 | 0.5117 | 0.5117 | 0.5112 |
+| Logistic Regression | 0.4967 | 0.4966 | 0.4967 | 0.4956 | 0.4967 | 0.4966 | 0.4967 | 0.4956 |
+| Random Forest | **0.5367** | **0.5367** | **0.5367** | **0.5365** | 0.5367 | 0.5367 | 0.5367 | 0.5365 |
+| XGBoost | 0.5117 | 0.5117 | 0.5117 | 0.5112 | 0.5117 | 0.5117 | 0.5117 | 0.5112 |
 
----
+---   q
 
 ### Visualisasi Perbandingan Metrik Model
 
@@ -341,8 +338,8 @@ Kesenjangan performa ini menunjukkan:
 
 ### 4. Model Terbaik
 
-- **Data Simulasi**: Random Forest (98.17%)
-- **Data Klinis**:  Random Forest dan XGBoost (53%)
+- **Data Simulasi**: Random Forest 
+- **Data Klinis**:  Random Forest dan XGBoost 
 
 Kedua model berbasis Random Forest dan XGBoost menunjukkan keunggulan dalam menangani kompleksitas data, namun performa pada data klinis masih terbatas.
 
@@ -355,14 +352,14 @@ Kedua model berbasis Random Forest dan XGBoost menunjukkan keunggulan dalam mena
 #### Problem Statement 1: Identifikasi Risiko dari Data Klinis
  **Untuk Data Simulasi:** Ya
 - Model berhasil mengidentifikasi individu dengan risiko tinggi kanker paru-paru dengan akurasi sangat tinggi (>96%).
-- Random Forest memberikan performa terbaik dengan akurasi 98.17%.
+- Random Forest memberikan performa terbaik 
 
  **Untuk Data Klinis:** Sebagian
 - Model dapat mengidentifikasi individu berisiko, namun dengan akurasi moderat (sekitar 53%).
 - Meskipun akurasi terbatas, model masih memberikan dasar awal untuk sistem skrining.
 
 #### Problem Statement 2: Algoritma Terbaik
- **Untuk Data Simulasi:** Random Forest (98.17%)
+ **Untuk Data Simulasi:** Random Forest 
  **Untuk Data Klinis:** Random Forest dan XGBoost (53%)
 
 Perbedaan ini menunjukkan bahwa pemilihan algoritma terbaik sangat bergantung pada karakteristik dataset yang digunakan.
@@ -394,7 +391,7 @@ Solusi yang dirancang memiliki dampak berbeda pada dua skenario:
 
 #### Dampak pada Skenario Simulasi:
  **Dampak Sangat Positif**
-- Dapat menjadi sistem prediksi yang sangat akurat (>98%).
+- Dapat menjadi sistem prediksi yang sangat akurat .
 - Memberikan kepercayaan diri pada implementasi solusi ML untuk kasus serupa.
 
 #### Dampak pada Skenario Klinis Nyata:
