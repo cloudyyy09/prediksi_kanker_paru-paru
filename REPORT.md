@@ -61,7 +61,7 @@ Setelah membaca dataset menggunakan `pd.read_csv()`, informasi umum dataset adal
 print("Jumlah duplikasi: ", df.duplicated().sum())
 ```
 
-Terdapat **0** data duplikat yang telah dihapus dengan:
+Terdapat **2** data duplikat yang telah dihapus dengan:
 
 ```python
 df = df.drop_duplicates()
