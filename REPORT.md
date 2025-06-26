@@ -61,7 +61,6 @@ Setelah membaca dataset menggunakan `pd.read_csv()`, informasi umum dataset adal
 print("Jumlah duplikasi: ", df.duplicated().sum())
 ```
 
-```
 Terdapat **2** data duplikat 
 ```
 
