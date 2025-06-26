@@ -280,6 +280,8 @@ y = df['LUNG_CANCER']
 
 Performa pada data klinis jauh lebih rendah (49.67% - 55.50%), dengan XGBoost dan Random Forest mencatatkan akurasi sekitar 53%, menunjukkan kompleksitas dan tantangan dalam menangani data medis nyata dibandingkan dengan data simulasi.
 
+## Evaluation
+
 ### Tabel Perbandingan Performa Model
 
 | Model | Data Simulasi |  |  |  | Data Klinis |  |  |  |
